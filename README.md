@@ -10,7 +10,7 @@ This style guide is different from other Objective-C style guides you may see, b
 
 ## Credits
 
-We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [raywenderlich.com'](https://github.com/raywenderlich/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
+We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [raywenderlich.com](https://github.com/raywenderlich/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
 
 ## Background
 
@@ -711,7 +711,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 Some other style guides that were used and processed for writing this guide:
 
-* [raywenderlich.com'](https://github.com/raywenderlich/objective-c-style-guide)
+* [raywenderlich.com](https://github.com/raywenderlich/objective-c-style-guide)
 * [Robots & Pencils](https://github.com/RobotsAndPencils/objective-c-style-guide)
 * [New York Times](https://github.com/NYTimes/objective-c-style-guide)
 * [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
