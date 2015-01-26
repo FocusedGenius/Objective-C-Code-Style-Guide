@@ -1,6 +1,6 @@
-# The official 33Devs Objective-C style guide.
+# The official Techery Objective-C style guide.
 
-This style guide outlines the coding conventions for 33Devs organization.
+This style guide outlines the coding conventions for Techery organization.
 
 ## Introduction
 
@@ -10,7 +10,7 @@ This style guide is different from other Objective-C style guides you may see, b
 
 ## Credits
 
-We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [raywenderlich.com](https://github.com/raywenderlich/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
+We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide), [raywenderlich.com](https://github.com/raywenderlich/objective-c-style-guide) and [33Devs](https://github.com/33devs/Objective-C-Code-Style-Guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
 
 ## Background
 
@@ -189,14 +189,14 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official 33Devs projects the prefix 'TTD' or 'TEA' should be used.
+A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official Techery projects the prefix 'TEC' or 3 letters that can be identify project should be used.
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **Preferred:**
 
 ```objc
-static NSTimeInterval const TTDViewControllerNavigationFadeAnimationDuration = 0.3;
+static NSTimeInterval const TECViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
@@ -264,7 +264,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Preferred:**
 
 ```objc
-@interface TTDObject : NSObject
+@interface TECObject : NSObject
 
 @property (nonatomic, strong) NSString *objectName;
 
@@ -274,7 +274,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Not Preferred:**
 
 ```objc
-@interface TTDObject : NSObject {
+@interface TECObject : NSObject {
   NSString *objectName;
 }
 ```
@@ -362,15 +362,15 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString * const TTDAboutViewControllerCompanyName = @"33Devs";
+static NSString * const TECAboutViewControllerCompanyName = @"Techery";
 
-static CGFloat const TTDImageThumbnailHeight = 50.0;
+static CGFloat const TECImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
 
 ```objc
-#define CompanyName @"33Devs"
+#define CompanyName @"Techery"
 
 #define thumbnailHeight 2
 ```
@@ -382,10 +382,10 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, TTDLeftMenuTopItemType) {
-  TTDLeftMenuTopItemMain,
-  TTDLeftMenuTopItemShows,
-  TTDLeftMenuTopItemSchedule
+typedef NS_ENUM(NSInteger, TECLeftMenuTopItemType) {
+  TECLeftMenuTopItemMain,
+  TECLeftMenuTopItemShows,
+  TECLeftMenuTopItemSchedule
 };
 ```
 
@@ -393,10 +393,10 @@ You can also make explicit value assignments (showing older k-style constant def
 
 ```objc
 typedef NS_ENUM(NSInteger, TTDGlobalConstants) {
-  TTDPinSizeMin = 1,
-  TTDPinSizeMax = 5,
-  TTDPinCountMin = 100,
-  TTDPinCountMax = 500,
+  TECPinSizeMin = 1,
+  TECPinSizeMax = 5,
+  TECPinCountMin = 100,
+  TECPinCountMax = 500,
 };
 ```
 
@@ -456,16 +456,16 @@ switch (condition) {
 When using an enumerated type for a switch, 'default' is not needed.   For example:
 
 ```objc
-TTDLeftMenuTopItemType menuType = TTDLeftMenuTopItemMain;
+TECLeftMenuTopItemType menuType = TECLeftMenuTopItemMain;
 
 switch (menuType) {
-  case TTDLeftMenuTopItemMain:
+  case TECLeftMenuTopItemMain:
     // ...
     break;
-  case TTDLeftMenuTopItemShows:
+  case TECLeftMenuTopItemShows:
     // ...
     break;
-  case TTDLeftMenuTopItemSchedule:
+  case TECLeftMenuTopItemSchedule:
     // ...
     break;
 }
@@ -474,12 +474,12 @@ switch (menuType) {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `TTDPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `TECPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
 ```objc
-@interface TTDDetailViewController ()
+@interface TECDetailViewController ()
 
 @property (nonatomic, strong) GADBannerView *googleAdView;
 @property (nonatomic, strong) ADBannerView *iAdView;
@@ -711,6 +711,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 Some other style guides that were used and processed for writing this guide:
 
+* [33Devs](https://github.com/33devs/Objective-C-Code-Style-Guide)
 * [raywenderlich.com](https://github.com/raywenderlich/objective-c-style-guide)
 * [Robots & Pencils](https://github.com/RobotsAndPencils/objective-c-style-guide)
 * [New York Times](https://github.com/NYTimes/objective-c-style-guide)
