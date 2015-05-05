@@ -321,7 +321,7 @@ Dot-notation should **always** be used for accessing and mutating properties, as
 
 **Preferred:**
 ```objc
-NSInteger arrayCount = [self.array count];
+NSInteger arrayCount = [self.array count]; //MAX_COMMENT : Why not just self.array.count?
 view.backgroundColor = [UIColor orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
@@ -651,7 +651,8 @@ When methods return an error parameter by reference, switch on the returned valu
 **Preferred:**
 ```objc
 NSError *error;
-if (![self trySomethingWithError:&error]) {
+BOOL tryingResult = [self trySomethingWithError:&error]; //MAX_COMMENT : I think, methods result should be contained in varialble for simplifying debug process.
+if (!tryingResult) {
   // Handle Error
 }
 ```
@@ -692,13 +693,34 @@ Line breaks are an important topic since this style guide is focused for print a
 
 For example:
 ```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
+self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers]; //MAX_COMMENT : It should be isn't quite correct example for this issue. I beleive that the best practice is do not create ling method names.
 ```
 A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (4 spaces).
 ```objc
 self.productsRequest = [[SKProductsRequest alloc]
     initWithProductIdentifiers:productIdentifiers];
 ```
+
+## Method qualifier
+
+It should contain one space after qualifier and *NO* space after method return type
+
+For example:
+```objc
+- (void)someMethod;
+- (NSString *)stringReturnMethod;
++ (id)someStaticMethod;
+```
+**Not Preferred:**
+```objc
+-(void)someMethod;
+-(void) method;
+- (void) anotherMethod;
+```
+
+## Project Structure
+
+*TODO*
 
 
 ## Xcode project
