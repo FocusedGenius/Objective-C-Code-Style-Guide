@@ -321,7 +321,7 @@ Dot-notation should **always** be used for accessing and mutating properties, as
 
 **Preferred:**
 ```objc
-NSInteger arrayCount = [self.array count]; //MAX_COMMENT : Why not just self.array.count?
+NSInteger arrayCount = [self.array count];
 view.backgroundColor = [UIColor orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
@@ -357,7 +357,7 @@ NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
 
 ## Constants
 
-Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
+Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro. If `static` constants should be used in other classes they should be predeclared in headers as `extern` constants.
 
 **Preferred:**
 
@@ -414,25 +414,27 @@ enum GlobalConstants {
 
 ## Case Statements
 
-Braces are not required for case statements, unless enforced by the complier. 
-When a case contains more than one line, braces should be added.
+Braces are required for case statements.
 
 ```objc
 switch (condition) {
-  case 1:
+  case 1: {
     // ...
     break;
+  }
   case 2: {
     // ...
     // Multi-line example using braces
     break;
   }
-  case 3:
+  case 3: {
     // ...
     break;
-  default:
+  }
+  default: {
     // ...
     break;
+  }
 }
 
 ```
@@ -651,7 +653,7 @@ When methods return an error parameter by reference, switch on the returned valu
 **Preferred:**
 ```objc
 NSError *error;
-BOOL tryingResult = [self trySomethingWithError:&error]; //MAX_COMMENT : I think, methods result should be contained in varialble for simplifying debug process.
+BOOL tryingResult = [self trySomethingWithError:&error]; 
 if (!tryingResult) {
   // Handle Error
 }
@@ -693,7 +695,7 @@ Line breaks are an important topic since this style guide is focused for print a
 
 For example:
 ```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers]; //MAX_COMMENT : It should be isn't quite correct example for this issue. I beleive that the best practice is do not create ling method names.
+self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
 ```
 A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (4 spaces).
 ```objc
