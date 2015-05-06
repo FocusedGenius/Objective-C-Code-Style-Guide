@@ -357,7 +357,7 @@ NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
 
 ## Constants
 
-Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
+Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro. If `static` constants should be used in other classes they should be predeclared in headers as `extern` constants.
 
 **Preferred:**
 
@@ -414,25 +414,27 @@ enum GlobalConstants {
 
 ## Case Statements
 
-Braces are not required for case statements, unless enforced by the complier. 
-When a case contains more than one line, braces should be added.
+Braces are required for case statements.
 
 ```objc
 switch (condition) {
-  case 1:
+  case 1: {
     // ...
     break;
+  }
   case 2: {
     // ...
     // Multi-line example using braces
     break;
   }
-  case 3:
+  case 3: {
     // ...
     break;
-  default:
+  }
+  default: {
     // ...
     break;
+  }
 }
 
 ```
@@ -651,7 +653,8 @@ When methods return an error parameter by reference, switch on the returned valu
 **Preferred:**
 ```objc
 NSError *error;
-if (![self trySomethingWithError:&error]) {
+BOOL tryingResult = [self trySomethingWithError:&error]; 
+if (!tryingResult) {
   // Handle Error
 }
 ```
@@ -699,6 +702,27 @@ A long line of code like this should be carried on to the second line adhering t
 self.productsRequest = [[SKProductsRequest alloc]
     initWithProductIdentifiers:productIdentifiers];
 ```
+
+## Method qualifier
+
+It should contain one space after qualifier and *NO* space after method return type
+
+For example:
+```objc
+- (void)someMethod;
+- (NSString *)stringReturnMethod;
++ (id)someStaticMethod;
+```
+**Not Preferred:**
+```objc
+-(void)someMethod;
+-(void) method;
+- (void) anotherMethod;
+```
+
+## Project Structure
+
+*TODO*
 
 
 ## Xcode project
