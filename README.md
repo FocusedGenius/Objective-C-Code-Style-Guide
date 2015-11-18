@@ -724,8 +724,12 @@ For example:
 
 *TODO*
 
-
 ## Xcode project
+
+*Please enable "Pedantic Warnings" to YES and use this line in "Other C flags"*
+```objc
+-fsanitize=undefined-trap -fsanitize-undefined-trap-on-error -Werror=objc-protocol-property-synthesis -Werror=protocol -Werror=assign-enum -Werror=objc-missing-super-calls -Werror=incompatible-pointer-types -Werror=unused-member-function -Werror=missing-selector-name -Werror=deprecated-declarations -Werror=abstract-vbase-init -Werror=atomic-property-with-user-defined-accessor -Werror=incomplete-implementation -Wunreachable-code
+```
 
 The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
 
