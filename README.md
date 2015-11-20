@@ -727,11 +727,26 @@ For example:
 -
 ## Xcode project
 
-*Please enable "Pedantic Warnings" to YES and use this line in "Other C flags"*
+1 - compiler options
+*Proposal enable "Pedantic Warnings" to YES and use this line in "Other C flags"*
 ```objc
--fsanitize=undefined-trap -fsanitize-undefined-trap-on-error -Werror=objc-protocol-property-synthesis -Werror=protocol -Werror=assign-enum -Werror=objc-missing-super-calls -Werror=incompatible-pointer-types -Werror=unused-member-function -Werror=missing-selector-name -Werror=deprecated-declarations -Werror=abstract-vbase-init -Werror=atomic-property-with-user-defined-accessor -Werror=incomplete-implementation -Wunreachable-code
+-fsanitize=address -fsanitize=undefined -fsanitize-trap=undefined -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=signed-integer-overflow -fsanitize=unsigned-integer-overflow -fsanitize=vla-bound -Werror=objc-protocol-property-synthesis -Werror=protocol -Werror=objc-missing-super-calls -Werror=incompatible-pointer-types -Werror=unused-member-function -Werror=missing-selector-name -Werror=deprecated-declarations -Werror=abstract-vbase-init -Werror=atomic-property-with-user-defined-accessor -Werror=incomplete-implementation -Wunreachable-code
 ```
 
+details:
+about sanitize - http://clang.llvm.org/docs/UsersManual.html#controlling-code-generation
+//TODO: after stable -fsanitize=memory add it to list (BUT It is not possible to combine more than one of the -fsanitize=address, -fsanitize=thread, and -fsanitize=memory checkers in the same program. The -fsanitize=undefined checks can only be combined with -fsanitize=address)
+
+about -Werror and -W - it have self described names ;)
+
+
+Proposal for Objective-C++ project's:
+```
+-flto -fsanitize=cfi-cast-strict -fsanitize=cfi-derived-cast -fsanitize=cfi-unrelated-cast -fsanitize=cfi-nvcall -fsanitize=cfi-vcall -fsanitize=object-size -fsanitize=return -fsanitize=vptr -fsanitize-memory-use-after-dtor 
+```
+
+
+2 - file structure
 The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
 
 When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
