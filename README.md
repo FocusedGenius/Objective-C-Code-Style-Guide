@@ -730,7 +730,8 @@ For example:
 1 - compiler options
 *Proposal enable "Pedantic Warnings" to YES and use this line in "Other C flags"*
 ```objc
--fsanitize=address -fsanitize=undefined -fsanitize-trap=undefined -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=signed-integer-overflow -fsanitize=unsigned-integer-overflow -fsanitize=vla-bound -Werror=objc-protocol-property-synthesis -Werror=protocol -Werror=objc-missing-super-calls -Werror=incompatible-pointer-types -Werror=unused-member-function -Werror=missing-selector-name -Werror=deprecated-declarations -Werror=abstract-vbase-init -Werror=atomic-property-with-user-defined-accessor -Werror=incomplete-implementation -Wunreachable-code
+    -fsanitize=address -fsanitize=undefined-trap -fsanitize-undefined-trap-on-error -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero -fsanitize=signed-integer-overflow -fsanitize=vla-bound -Werror=objc-protocol-property-synthesis -Werror=protocol -Werror=objc-missing-super-calls -Werror=incompatible-pointer-types -Werror=unused-member-function -Werror=missing-selector-name -Werror=deprecated-declarations -Werror=abstract-vbase-init -Werror=atomic-property-with-user-defined-accessor -Werror=incomplete-implementation -Wunreachable-code -ferror-limit=100 -Wno-gnu-statement-expression -Wno-gnu-conditional-omitted-operand -Wno-c99-extensions
+
 ```
 
 details:
@@ -738,7 +739,7 @@ about sanitize - http://clang.llvm.org/docs/UsersManual.html#controlling-code-ge
 //TODO: after stable -fsanitize=memory add it to list (BUT It is not possible to combine more than one of the -fsanitize=address, -fsanitize=thread, and -fsanitize=memory checkers in the same program. The -fsanitize=undefined checks can only be combined with -fsanitize=address)
 
 about -Werror and -W - it have self described names ;)
-
+      -Wno for disable GNU C extensions warnings
 
 Proposal for Objective-C++ project's:
 ```
